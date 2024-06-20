@@ -1,3 +1,4 @@
+//DO WHILE
 let idade = 17;
 do {
     idade = Number(prompt("Digite sua idade"));
