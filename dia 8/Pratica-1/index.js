@@ -20,7 +20,7 @@ soma += notas[contador]
 
 
 contador++;
-if(contador >= 3){
+if(contador >= 8){
     let respo = prompt("Deseja continuar registrando? (s/n)");
     if(respo == "s"){
         repetidor = true;
