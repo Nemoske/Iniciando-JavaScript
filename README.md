@@ -1,1 +1,2 @@
-"# Iniciando-JavaScript" 
+"# Iniciando-JavaScript"
+### Treinado a lógica 
