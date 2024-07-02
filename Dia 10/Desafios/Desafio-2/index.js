@@ -12,6 +12,7 @@ resultado = distância / (VelocidadeMaxima / Aceleracao).
 A função deve retornar esse resultado;
 */
 
+
 class Carro{
     nome;
     potencia;
@@ -104,7 +105,6 @@ class Corrida{
         alert("Vencedor: "+this.vencedor.nome);
     }
 }
-
 
 let corrida = new Corrida("Monza","Fórmula 1",60000);
 
