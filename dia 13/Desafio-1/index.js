@@ -3,7 +3,7 @@ let nomes = [];
 let senhas = [];
 
 function inicio(){
-let opcao = prompt("O que você deseja fazer?\n Cadastrar(1)\n Fazer login(2)\n Excluir cadastro(3)\n Encerrar o programa (4)");
+let opcao = prompt("O que você deseja fazer?\n Cadastrar(1)\n Fazer login(2) \n Excluir cadastro(3)\n Editar cadasto (4)\n Encerrar o programa (5)");
 
 return opcao;
 }
@@ -11,6 +11,20 @@ return opcao;
 function cadastrar(){
     nomes.push(prompt("Digite seu nome:"));
     senhas.push(prompt("Digite sua senha:"));
+}
+
+function editarCadastro(nome,senha){
+    let indice = nomes.indexOf(nome);
+    if(indice !== -1 && senhas[indice] == senha){
+        let novoNome = prompt("Digite seu novo nome:");
+        let novaSenha = prompt("Digite sua nova senha:");
+        nomes[indice] = novoNome;
+        senhas[indice] = novaSenha;
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function fazerLogin(nome,senha){
@@ -31,7 +45,7 @@ function excluirCadastro(nome){
         alert("Cadastro excluído com sucesso!");
     }
     else{
-        alert("Não foi possível excluir")
+        alert("Não foi possível excluir");
     }
 }
 
@@ -44,14 +58,14 @@ while(continuar){
             cadastrar();
             break;
         case "2":
-            let nome = prompt("Digite seu nome:")
-            let senha = prompt("Digite sua senha:")
+            let nome = prompt("Digite seu nome:");
+            let senha = prompt("Digite sua senha:");
             let login = fazerLogin(nome,senha);
             if(login){
                 alert("Welcome")
             }
             else{
-                alert("Não foi possível realizar o login")
+                alert("Não foi possível realizar o login");
             }
             break;
         case "3":
@@ -59,6 +73,17 @@ while(continuar){
             excluirCadastro(nomeExcluir);
             break;
         case "4":
+            let user = prompt("Digite o seu nome");
+            let password = prompt("Digite sua senha");
+            let editar = editarCadastro(user,password);
+            if(editar){
+                alert("Usuário alterado com sucesso!");
+            }
+            else{
+                alert("Não foi possível alterar o usuário!");
+            }
+            break;
+        case "5":
             continuar = false;
             break;
         default:
