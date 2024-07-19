@@ -58,14 +58,34 @@ function cadastroHoteis(){
 
 
 function cadastroReservas(){
-    let responsavel =  prompt("Digite o nome do responsável:");
-    let idDoHotel =  Number(prompt("Digite o id do hotel:"));
-    let diaDeEntrada = Number(prompt("Digite o dia de entrada:"));
-    let diaDeSaida = Number(prompt("Digite o dia de saída:"));
-    let reserva = new Reserva(idReserva,idDoHotel,responsavel,diaDeEntrada,diaDeSaida);
-    idReserva++;
-    
-    reservas.push(reserva);
+   let idHotel;
+   let existe = false;
+   do{
+    idHotel = parseInt(prompt("Digite o id do hotel:"));
+    for(let i = 0; i < hoteis.length; i++){
+        if(idHotel == hoteis[i].Id){
+            i = hoteis.length
+            existe = true
+        } else if(i == hoteis.length - 1){
+            console.log("Id de hotel não cadastrado");
+        }
+    }
+   } while(!existe);
+
+   let nome = prompt("Digite o nome do responsável");
+   let diaEntrada = parseInt(prompt("Digite o dia de entrada"));
+   let diaSaida
+   do {
+    diaSaida = parseInt(prompt("Digite o dia de saída"));
+    if(diaSaida < diaEntrada) {
+        console.log("O dia de saída deve ser maior que o dia de entrada");
+    }
+   } while (diaSaida < diaEntrada);
+
+   let reserva = new Reserva(idReserva, idHotel, nome, diaEntrada, diaSaida);
+   idReserva++;
+   reservas.push(reserva);
+
 }
 
 //Função de exibir
@@ -146,8 +166,8 @@ do{
                 todasReservas(prompt("Digite o nome do responsável pela reserva:"));
                 break;
             case "6":
-                let hoteis = ProcurarHotelPorCategoria(prompt("Digite a categoria do hotel:"));
-                console.log(hoteis);
+                let hoteiss = ProcurarHotelPorCategoria(prompt("Digite a categoria do hotel:"));
+                console.log(hoteiss);
                 break;
             case "7":
                 let idHotel = parseInt(prompt("Digite o id do hotel:"));
